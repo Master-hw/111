@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>当前时间显示</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        #clock {
+            font-weight: bold;
+            color: #3366cc;
+        }
+    </style>
+</head>
+<body>
+    <div>当前时间：<span id="clock">加载中...</span></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hour = String(now.getHours()).padStart(2, '0');
+            const minute = String(now.getMinutes()).padStart(2, '0');
+            const second = String(now.getSeconds()).padStart(2, '0');
+
+            const timeString = `${year}年${month}月${day}日 ${hour}:${minute}:${second}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // 初始化时更新一次
+        updateClock();
+
+        // 每秒钟更新一次
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
